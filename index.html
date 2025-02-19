@@ -470,6 +470,89 @@
             padding: 1px;
             margin: 1px;
         }
+        #tutorial{
+            justify-self: center;
+            width: fit-content;
+            animation: fade-in 1s;
+        }
+        @keyframes fade-in {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        #skipTutorialButton{
+            background-color: aliceblue;
+            color: black;
+            border-radius: 5px;
+            font-size: large;
+            font-weight: bold;
+        }
+        #skipTutorialButton:hover{
+            cursor: pointer;
+            background-color: black;
+            color: aliceblue;
+        }
+        #tutorialInfoBox{
+            background-color: aliceblue;
+            border: solid black 1px;
+            width: fit-content;
+            height: fit-content;
+            margin-top: 5%;
+            padding: 15px;
+            display: block;
+            justify-self: center;
+            border-radius: 5px;
+        }
+        #tutorialInfoText{
+            width: 300px;
+            text-align: center;
+            text-wrap: wrap;
+            text-align: center;
+            padding: 5px;
+        }
+        #nextButton{
+            background-color: rgb(167, 219, 182);
+            color: black;
+            border-radius: 5px;
+            font-size: large;
+            font-weight: bold;
+            margin: 15px;
+        }
+        #nextButton:hover{
+            cursor: pointer;
+            background-color: black;
+            color: aliceblue;
+        }
+        #previousButton{
+            background-color: rgb(243, 229, 189);
+            color: black;
+            border-radius: 5px;
+            font-size: large;
+            font-weight: bold;
+            margin: 15px;
+        }
+        #previousButton:hover{
+            cursor: pointer;
+            background-color: black;
+            color: aliceblue;
+        }
+        @keyframes border-highlight {
+            0%{
+                border-color: rgb(4, 70, 70);
+                border-width: 5px;
+            }
+            50%{
+                border-color: aquamarine;
+                border-width: 5px;
+            }
+            100%{
+                border-color: rgb(4, 70, 70);
+                border-width: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -484,6 +567,17 @@
     <h5 id="mathsText3">M<br>A<br>T<br>H<br>S</h5>
     <h5 id="mathsText4">M<br>A<br>T<br>H<br>S</h5>
     <h5 id="mathsText5">M<br>A<br>T<br>H<br>S</h5>
+
+    <div id="tutorial">
+    <div id="tutorialInfoBox">
+        <input id="skipTutorialButton" type="button" value="skip tutorial >" onclick="tutorial('skip')">
+        <p id="tutorialInfoText"></p><br>
+        <div style="display: flex; justify-self: center;">
+        <input id="previousButton" type="button" value="Previous" onclick="tutorial('previous')">
+        <input id="nextButton" type="button" value="Next" onclick="tutorial('next')">
+        </div>
+    </div>
+    </div>
         <table id="calculatorAndResultDiv">
             <tr>
                 <td>
@@ -497,9 +591,9 @@
                         <input type="button" class="matrixOperationButton" value="Matrix Multiplication" onclick="matrixOperations('x')">
                         </div>
 
-                        <input type="button" class="matrixControlButton" value="Backspace" onclick="backspaceMatrixInput()">
-                        <input type="button" class="matrixControlButton" value="Clear" onclick="clearMatrix()">
-                        <input type="button" class="matrixControlButton" value="Calculate" onclick="calucalteResultMatrix()">
+                        <input id="backspaceButton" type="button" class="matrixControlButton" style="background-color: rgb(247, 246, 218);" value="Backspace" onclick="backspaceMatrixInput()">
+                        <input id="clearButton" type="button" class="matrixControlButton" style="background-color: rgb(251, 212, 212);" value="Clear" onclick="clearMatrix()">
+                        <input id="calculateButton" type="button" class="matrixControlButton" style="background-color: rgb(227, 251, 238);" value="Calculate" onclick="calucalteResultMatrix()">
             
                         <div id="matricesButtons"><p style="opacity: 0.8;padding: 5px;">Newly added matrices will be shown here</p></div>
                     </div>
@@ -536,6 +630,106 @@
     </table>
 
     <script>
+        var tutorialCounter = 0;
+        var tutorialText = [
+            "Welcome to Matrix Maths, where various matrix operations can be performed by simple steps!",
+            "First to create a new matrix, Enter Number of Rows and Coloumns",
+            "Enter the values",
+            "Click on 'Create Matrix'",
+            "The values of all the created matrix can be seen here",
+            "if you want to remove a matrix Click on Remove",
+            "The matrices can be used for performing any operations from here",
+            "To perform any matrix operation click on the matrix from here",
+            "Select the operation to be performed from here",
+            "Click on another matrix to complete the expression",
+            "Click on Calculate",
+            "The resultant matrix can be seen here",
+            "To delete a operand or operator click Backspace",
+            "To clear the expression click Clear",
+            "Now try it yourself!"
+        ]
+        document.getElementById("tutorialInfoText").innerHTML = tutorialText[tutorialCounter];
+        function tutorial(action){
+            if(action == "next" && tutorialCounter < tutorialText.length-1){
+                tutorialCounter += 1;
+                document.getElementById("tutorialInfoText").innerHTML = tutorialText[tutorialCounter];
+            }
+            if(action == "previous" && tutorialCounter != 0){
+                tutorialCounter -= 1;
+                document.getElementById("tutorialInfoText").innerHTML = tutorialText[tutorialCounter];
+            }
+            if(action == "skip"){
+                document.getElementById('tutorial').style.display = 'none';
+                document.getElementById("matrixInputDiv").style.animation = "";
+                document.getElementById("matrices").style.animation = "";
+                document.getElementById("matricesButtons").style.animation = "";
+                document.getElementById("matrixOperationButtonsDiv").style.animation = "";
+                document.getElementById("resultMatrix").style.animation = "";
+                document.getElementById("calculateButton").style.animation = "";
+                document.getElementById("clearButton").style.animation = "";
+                document.getElementById("backspaceButton").style.animation = "";
+            }
+            document.getElementById("matrixInputDiv").style.animation = "";
+            document.getElementById("matrices").style.animation = "";
+            document.getElementById("matricesButtons").style.animation = "";
+            document.getElementById("matrixOperationButtonsDiv").style.animation = "";
+            document.getElementById("resultMatrix").style.animation = "";
+            document.getElementById("calculateButton").style.animation = "";
+            document.getElementById("clearButton").style.animation = "";
+            document.getElementById("backspaceButton").style.animation = "";
+            if(action == "next" || action == "previous"){
+                switch(tutorialCounter){
+                case 0:
+                    break;
+                case 1:
+                    setTimeout(function (){document.getElementById("matrixInputDiv").scrollIntoView({behavior:"smooth"});}, 1000);
+                    document.getElementById("matrixInputDiv").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 2:
+                    document.getElementById("matrixInputDiv").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 3:
+                    document.getElementById("matrixInputDiv").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 4:
+                    document.getElementById("matrices").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 5:
+                    document.getElementById("matrices").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 6:
+                    document.getElementById("matricesButtons").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 7:
+                    document.getElementById("matricesButtons").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 8:
+                    document.getElementById("matrixOperationButtonsDiv").style.animation = "border-highlight 3s infinite";
+                    break; 
+                case 9:
+                    document.getElementById("matricesButtons").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 10:
+                    document.getElementById("calculateButton").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 11:
+                    document.getElementById("resultMatrix").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 12:
+                    document.getElementById("backspaceButton").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 13:
+                    document.getElementById("clearButton").style.animation = "border-highlight 3s infinite";
+                    break;
+                case 14:
+                    tutorialCounter += 1;
+                    break;
+                case 15:
+                    document.getElementById('tutorial').style.display = 'none';
+                    break;
+                }
+            }
+        }
         var numberOfMatrices = 1;
         var matrices = [];
         function generateNewMatrix(){
