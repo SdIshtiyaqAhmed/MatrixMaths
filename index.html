@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Matrix Operations</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            min-width: fit-content;
+            background-color: rgb(229, 234, 242);
+        }
+        #matrixText1{
+            animation: moveFade1 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            left: 1px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        #mathsText1{
+            animation: moveFade1 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            right: 0px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        @keyframes moveFade1 {
+            0%{
+                transform: translateX(1px);
+            }
+            80%{
+                transform: translateX(-20px);
+            }
+            100%{
+                transform: translateX(1px);
+                
+            }
+        }
+        #matrixText2{
+            animation: moveFade2 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            left: 2px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        #mathsText2{
+            animation: moveFade2 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            right: 2px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        @keyframes moveFade2 {
+            0%{
+                transform: translateX(1px);
+            }
+            80%{
+                transform: translateX(-10px);
+            }
+            100%{
+                transform: translateX(1px);
+            }
+        }
+        #matrixText3{
+            animation: moveFade3 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            left: 3px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        #mathsText3{
+            animation: moveFade3 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            right: 3px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        @keyframes moveFade3 {
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        #matrixText4{
+            animation: moveFade4 1s ;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            left: 4px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        #mathsText4{
+            animation: moveFade4 1s ;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            right: 4px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        @keyframes moveFade4 {
+            0%{
+                transform: translateX(1px);
+            }
+            80%{
+                transform: translateX(10px);
+            }
+            100%{
+                transform: translateX(1px);
+            }
+        }
+        #matrixText5{
+            animation: moveFade5 1s ;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            left: 5px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        #mathsText5{
+            animation: moveFade5 1s;
+            text-align: center; 
+            margin: 0px; 
+            position: fixed; 
+            right: 5px;
+            z-index: -1; 
+            font-size: 100px; 
+            opacity: 0.1; 
+            -webkit-text-fill-color: aliceblue; 
+            -webkit-text-stroke-color: black; 
+            -webkit-text-stroke-width: 1px; 
+            font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
+        @keyframes moveFade5 {
+            0%{
+                transform: translateX(1px);
+            }
+            80%{
+                transform: translateX(20px);
+            }
+            100%{
+                transform: translateX(1px);
+            }
+        }
+        #matrixInputDiv{
+            background-color: rgb(199, 227, 245);
+            box-shadow: 0px 3px 3px rgba(32, 39, 41, 0.429);
+            border: solid black 1px;
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+            text-align: center;
+            margin: 15px;
+            padding: 15px;
+            justify-self: center;
+
+        }
+        #matrixCalculator{
+            background-color: rgb(199, 227, 245);
+            box-shadow: 0px 3px 3px rgba(32, 39, 41, 0.429);
+            border: solid black 1px;
+            border-radius: 5px;
+            width: fit-content;
+            height: fit-content;
+            text-align: center;
+            margin: 15px;
+            padding: 15px;
+            justify-self: center; 
+        }
+        #matricesInput{
+            overflow-x: scroll;
+            background-color: rgb(225, 237, 244);
+            
+        }
+        .matrixButton{
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: 5px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .matrixButton:hover{
+            cursor: pointer;
+            background-color: rgb(215, 232, 250);
+            color: brown;
+        }
+        #matricesButtons{
+            justify-self: center;
+            width: fit-content;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 15px;
+            padding: 5px;
+        }
+        .matrixOperationButton{
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: 5px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .matrixOperationButton:hover{
+            cursor: pointer;
+            background-color: rgb(4, 17, 68);
+            color: rgb(255, 255, 255);
+        }
+        .matrixControlButton{
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: 5px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .matrixControlButton:hover{
+            cursor: pointer;
+            background-color: rgb(255, 245, 245);
+            color: rgb(0, 0, 0);
+            animation: popup 0.5s;
+            box-shadow: 0px 3px rgba(0, 0, 0, 0.562);
+        }
+        @keyframes popup {
+            0%{
+                box-shadow: 0px 0px black;
+            }
+            100%{
+                box-shadow: 0px 3px rgba(0, 0, 0, 0.562);
+            }
+        }
+        #matrixOperationButtonsDiv{
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 15px;
+            padding: 5px;
+        }
+        #createMatrixButton{
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: 5px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        #createMatrixButton:hover{
+            cursor: pointer;
+            background-color: antiquewhite;
+            color: brown;
+        }
+        .removeMatrixButton{
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            margin: 15px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        .removeMatrixButton:hover{
+            cursor: pointer;
+            background-color: rgb(136, 11, 11);
+            color: rgb(255, 255, 255);
+        }
+        .matrixDiv{
+            justify-self: center;
+            justify-content: center;
+            border: solid black 1px;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px;
+            height: fit-content;
+            width: fit-content;
+            font-size: large;
+        }
+        .matrixCellValues{
+            width: 80px;
+            margin: 5px;
+            text-align: center;
+            justify-content: center;
+            font-size: large;
+        }
+        .matrixValueText{
+            padding: 1px;
+            margin: 3px;
+            justify-content: center;
+            font-size: large;
+        }
+        .matrixBorders{
+            border: solid black;
+            border-width: 0px 3px;
+            border-radius: 15%;
+        }
+        #matrixNRows{
+            display: inline-flex;
+            margin: 15px;
+            width: 50px;
+            text-align: center;
+            justify-content: center;
+            font-size: larger;
+        }
+        #matrixNCols{
+            display: inline-flex;
+            margin: 15px;
+            width: 50px;
+            text-align: center;
+            justify-content: center;
+            font-size: larger;
+        }
+        .matrixValues{
+            width: 50px;
+            text-align: center;
+            justify-content: center;
+        }
+        .matrixTable{
+            display: flex;
+            justify-content: center;
+        }
+        #matrices{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            backdrop-filter: blur(3px);
+            border: solid black 1px;
+            border-radius: 5px;
+            animation: slide_right 1s;  
+        }
+        @keyframes slide_right {
+            0%{
+                transform: translateX(-30px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        #resultMatrix{
+            justify-self: center;
+            text-align: center;
+            border: solid black 1px;
+            border-radius: 5px;
+            width: fit-content;
+            font-size: large;
+            backdrop-filter: blur(3px);
+            animation: slide_left 1s;
+        }
+        @keyframes slide_left {
+            0%{
+                transform: translateX(30px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateX(0px);
+                opacity: 1;
+            }
+        }
+        .resultMatrixBorders{
+            margin: 15px;
+            padding: 15px;
+            border: solid black;
+            border-width: 0px 3px;
+            border-radius: 15%;
+            width: fit-content;
+        }
+        #calculatorAndResultDiv{
+            justify-self: center;
+            width: fit-content;
+            animation: slide_down 1s;
+        }
+        @keyframes slide_down {
+            0%{
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        #createAndDisplayMatricesDiv{
+            justify-self: center;
+            width: fit-content;
+            animation: slide_up 1s;
+        }
+        @keyframes slide_up {
+            0%{
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100%{
+                transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+        ::-webkit-scrollbar{
+            width: 3px;
+        }
+        h3{
+            padding: 1px;
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+    <h5 id="matrixText1" >M<br>A<br>T<br>R<br>I<br>X</h5>
+    <h5 id="matrixText2" >M<br>A<br>T<br>R<br>I<br>X</h5>
+    <h5 id="matrixText3" >M<br>A<br>T<br>R<br>I<br>X</h5>
+    <h5 id="matrixText4" >M<br>A<br>T<br>R<br>I<br>X</h5>
+    <h5 id="matrixText5" >M<br>A<br>T<br>R<br>I<br>X</h5>
+    
+    <h5 id="mathsText1">M<br>A<br>T<br>H<br>S</h5>
+    <h5 id="mathsText2">M<br>A<br>T<br>H<br>S</h5>
+    <h5 id="mathsText3">M<br>A<br>T<br>H<br>S</h5>
+    <h5 id="mathsText4">M<br>A<br>T<br>H<br>S</h5>
+    <h5 id="mathsText5">M<br>A<br>T<br>H<br>S</h5>
+        <table id="calculatorAndResultDiv">
+            <tr>
+                <td>
+                    <div id="matrixCalculator">
+                        <div><h3 id="matricesInput"></h3></div>
+        
+                        <div id="matrixOperationButtonsDiv">
+                        <input type="button" class="matrixOperationButton" value="Addition" onclick="matrixOperations('+')">
+                        <input type="button" class="matrixOperationButton" value="Subtraction" onclick="matrixOperations('-')">
+                        <input type="button" class="matrixOperationButton" value="Element-wise Multiplication" onclick="matrixOperations('*')">
+                        <input type="button" class="matrixOperationButton" value="Matrix Multiplication" onclick="matrixOperations('x')">
+                        </div>
+
+                        <input type="button" class="matrixControlButton" value="Backspace" onclick="backspaceMatrixInput()">
+                        <input type="button" class="matrixControlButton" value="Clear" onclick="clearMatrix()">
+                        <input type="button" class="matrixControlButton" value="Calculate" onclick="calucalteResultMatrix()">
+            
+                        <div id="matricesButtons"><p style="opacity: 0.8;padding: 5px;">Newly added matrices will be shown here</p></div>
+                    </div>
+                </td>
+                <td>
+                    <div id="resultMatrix"><p style="opacity: 0.8;padding: 15px;">The result matrix will be displayed here</p></div>
+                </td>
+            </tr>
+        </table>
+    <table id="createAndDisplayMatricesDiv">
+        <tr>
+            <td>
+                <div id="matrices"><p style="opacity: 0.8;padding: 15px;">Newly added matrices will be shown here</p></div>
+            </td>
+            <td>
+                <div id='matrixInputDiv'>
+                    <h3>Create New Matrix</h3> <br> 
+                    <table style="justify-self: center;">
+                        <tr>
+                            <td><p style='display: inline'> Rows: </p></td>
+                            <td><input type='number' id='matrixNRows' oninput='changeMatrixSize()'></td>
+                        </tr>
+                        <tr>
+                            <td><p style='display: inline'> Coloumns: </p></td>
+                            <td><input type='number' id='matrixNCols' oninput='changeMatrixSize()'></td>
+                        </tr>
+                    </table>
+                    <h3 style='margin: 5px;'>Values:</h3><p id="noteToEnterNumOfRowsAndCols" style="opacity: 0.8;padding: 15px;">Enter the number of  <br> rows and coloumns first!</p>
+                    <div id='matrixValues'></div>
+                    <input type="button" id="createMatrixButton" value="Create matrix" onclick="generateNewMatrix()">
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        var numberOfMatrices = 1;
+        var matrices = [];
+        function generateNewMatrix(){
+            var nRows = document.getElementById("matrixNRows").value;
+            var nCols = document.getElementById("matrixNCols").value;
+            var matrix = []
+            var matrixCols = []
+            var counter = 0;
+            var ValidValues = true;
+            if(nRows == "" || nCols == ""){
+                ValidValues = false;
+            }
+            else{
+            for(var i=0; i<nRows; i++){
+                matrixCols = []
+                for(var j=0; j<nCols; j++){
+                    if(document.getElementsByClassName("matrixCellValues")[counter].value == ""){
+                        ValidValues = false;
+                        break;
+                    }
+                    matrixCols.push(document.getElementsByClassName("matrixCellValues")[counter].value);
+                    counter += 1;
+                }
+                matrix.push(matrixCols);
+            }
+            }
+            if(ValidValues){
+                matrices.push(matrix);
+                displayMatrices();
+            }
+            else{
+                alert("Invalid values in the matrix");
+            }
+        }
+        function removeMatrix(matrixNumber){
+            matrices.splice(matrixNumber,1);
+            displayMatrices();
+        }
+        function displayMatrices(){
+            var matricesLayout = "";
+            var matricesButtonsLayout = "";
+            for(var i=0; i<matrices.length; i++){
+                matricesLayout += "<div class='matrixDiv'><h3>Matrix"+(i+1)+"</h3><br><div class='matrixBorders'><table style='width: 100%; padding: 5px;'>";
+                matricesButtonsLayout += "<input type='button' class='matrixButton' value='Matrix"+(i+1)+"' onclick='addMatrixtoInput("+i+")'>";
+                for(var j=0; j<matrices[i].length; j++){
+                    matricesLayout += "<tr>";
+                        for(var k=0; k<matrices[i][j].length; k++){
+                            matricesLayout += "<td> <h5 class='matrixValueText'>"+matrices[i][j][k]+" </h5> </td>";
+                        }
+                    matricesLayout += "</tr>";
+                }
+                matricesLayout += "</table></div><input class='removeMatrixButton' type='button' value='Remove' onclick='removeMatrix("+i+")'></div>";
+            }
+            document.getElementById("matricesButtons").innerHTML = matricesButtonsLayout;
+            document.getElementById("matrices").innerHTML = matricesLayout;
+        }
+        function changeMatrixSize(){
+            var matrixNRows = document.getElementById("matrixNRows").value;
+            var matrixNCols = document.getElementById("matrixNCols").value;
+            if(matrixNRows < 1){
+                document.getElementById("matrixNRows").value = "";
+            }
+            if(matrixNCols < 1){
+                document.getElementById("matrixNCols").value = "";
+            }
+            if(matrixNRows != "" && matrixNCols != ""){
+                document.getElementById("noteToEnterNumOfRowsAndCols").style.display = "none";
+            }
+            matrixLayout = "<table class='matrixTable'>"
+            for(var i=0; i<matrixNRows; i++){
+                matrixLayout += "<tr>";
+                    for(var j=0; j<matrixNCols; j++){
+                        matrixLayout += "<td> <input type='number' class='matrixCellValues'> </td>";
+                    }
+                matrixLayout += "</tr>";
+            }
+            document.getElementById("matrixValues").innerHTML = matrixLayout+"</table>";
+        }
+
+        var matrixOperationArr = [];
+        var matrixOperationArrNumber = [];
+        function addMatrixtoInput(matrixNumber){
+            if(matrixOperationArr.length == 0 || matrixOperationArr[matrixOperationArr.length-1] == '+' || matrixOperationArr[matrixOperationArr.length-1] == '-' || matrixOperationArr[matrixOperationArr.length-1] == '*' || matrixOperationArr[matrixOperationArr.length-1] == 'x'){
+            matrixOperationArr.push("Matrix" + (matrixNumber+1));
+            matrixOperationArrNumber.push(matrixNumber+1);
+            document.getElementById("matricesInput").innerHTML += "Matrix" + (matrixNumber+1);
+            console.log(matrixOperationArr);
+            }
+        }
+        function matrixOperations(Operation){
+            if(matrixOperationArr.length != 0 && matrixOperationArr[matrixOperationArr.length-1] != '+' && matrixOperationArr[matrixOperationArr.length-1] != '-' && matrixOperationArr[matrixOperationArr.length-1] != '*' && matrixOperationArr[matrixOperationArr.length-1] != 'x'){
+                matrixOperationArr.push(Operation);
+                matrixOperationArrNumber.push(Operation);
+                document.getElementById('matricesInput').innerHTML += " " + Operation + " ";
+                console.log(matrixOperationArrNumber);
+            }
+        }
+        function clearMatrix(){
+            document.getElementById('matricesInput').innerHTML = '';
+            matrixOperationArr = [];
+            matrixOperationArrNumber = [];
+            displayResultMatrix([]);
+        }
+        function backspaceMatrixInput(){
+            matrixOperationArr.splice(matrixOperationArr.length-1,1);
+            matrixOperationArrNumber.splice(matrixOperationArrNumber.length-1,1);
+            var matrixInputLayout = "";
+            for(var i=0; i<matrixOperationArr.length; i++){
+                matrixInputLayout += matrixOperationArr[i];
+            }
+            document.getElementById('matricesInput').innerHTML = matrixInputLayout;
+
+        }
+
+        function calucalteResultMatrix(){
+            var ValidMatrix = true;
+            var prevMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[0]-1]));
+            for(var i=2; i<matrixOperationArrNumber.length; i+=2){
+                if(matrixOperationArrNumber[i-1] == "+"){
+                    var nextMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[i]-1]));
+                    if(prevMatrix.length == nextMatrix.length && prevMatrix[0].length == nextMatrix[0].length){
+                        for(var j=0; j<prevMatrix.length; j++){
+                            for(var k=0; k<prevMatrix[j].length; k++){
+                                nextMatrix[j][k] = parseInt(prevMatrix[j][k]) + parseInt(nextMatrix[j][k]);
+                            }
+                        }
+                    }
+                    prevMatrix = nextMatrix;
+                }
+                if(matrixOperationArrNumber[i-1] == "-"){
+                    var nextMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[i]-1]));
+                    if(prevMatrix.length == nextMatrix.length && prevMatrix[0].length == nextMatrix[0].length){
+                        for(var j=0; j<prevMatrix.length; j++){
+                            for(var k=0; k<prevMatrix[j].length; k++){
+                                nextMatrix[j][k] = parseInt(prevMatrix[j][k]) - parseInt(nextMatrix[j][k]);
+                            }
+                        }
+                    }
+                    prevMatrix = nextMatrix;
+                }
+                if(matrixOperationArrNumber[i-1] == "*"){
+                    var nextMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[i]-1]));
+                    if(prevMatrix.length == nextMatrix.length && prevMatrix[0].length == nextMatrix[0].length){
+                        for(var j=0; j<prevMatrix.length; j++){
+                            for(var k=0; k<prevMatrix[j].length; k++){
+                                nextMatrix[j][k] = parseInt(prevMatrix[j][k]) * parseInt(nextMatrix[j][k]);
+                            }
+                        }
+                    }
+                    prevMatrix = nextMatrix;
+                }
+                if(matrixOperationArrNumber[i-1] == "x"){
+                    var tempMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[i]-1]));
+                    var nextMatrix = JSON.parse(JSON.stringify(matrices[matrixOperationArrNumber[i]-1]));
+                    if(prevMatrix[0].length == nextMatrix.length && prevMatrix.length == nextMatrix[0].length){
+                        for(var j=0; j<prevMatrix.length; j++){
+                            for(var k=0; k<prevMatrix[j].length; k++){
+                                var n = prevMatrix[0].length;
+                                var sum = 0;
+                                    for(var s=0; s<n; s++){
+                                        sum += parseInt(prevMatrix[j][s])*parseInt(nextMatrix[s][k]);
+                                        console.log(sum,j,k,s,prevMatrix[j][s],nextMatrix[s][k]);
+                                    }
+                                tempMatrix[j][k] = sum;
+                            }
+                        }
+                        var m = prevMatrix.length;
+                        var n = nextMatrix[0].length;
+                        nextMatrix = [];
+                        for(var s=0; s<m; s++){
+                            var row = []
+                            for(var t=0; t<n; t++){
+                                row.push(tempMatrix[s][t]);
+                            }
+                            nextMatrix.push(row);
+                        }
+                        prevMatrix = nextMatrix;
+                    }
+                    else{
+                        ValidMatrix = false;
+                        alert("Invalid matrix for vector multiplication")
+                        break;
+                    }
+                }
+            }
+            if(ValidMatrix){
+                displayResultMatrix(prevMatrix);
+            }
+        }
+        function displayResultMatrix(resultMatrix){
+            document.getElementById("resultMatrix").style.display = "block";
+            var resultMatrixLayout = "<h3 style='margin: 5px;'> Result Matrix </h3><div class='resultMatrixBorders'><table>";
+            for(var i=0; i<resultMatrix.length; i++){
+                resultMatrixLayout += "<tr>";
+                for(var j=0; j<resultMatrix[i].length; j++){
+                    resultMatrixLayout += "<td style='padding: 3px;''>"+resultMatrix[i][j]+"</td>";
+                }
+                resultMatrixLayout += "</tr>";
+            }
+            resultMatrixLayout += "</table></div>";
+            document.getElementById("resultMatrix").innerHTML = resultMatrixLayout;
+        }
+    </script>
+</body>
+</html>
